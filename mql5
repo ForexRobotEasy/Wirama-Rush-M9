@@ -1,0 +1,81 @@
+
+//+------------------------------------------------------------------+
+//|                                           Wirama Rush M9.mq5     |
+//|                                 Copyright 2021, Forex Robot Easy Team|
+//|                                                  forexroboteasy.com|
+//+------------------------------------------------------------------+
+
+// Define input parameters
+input string CurrencyPairs = 'NZDCAD, AUDNZD, AUDCAD'; // Currency pairs for trading
+input ENUM_TIMEFRAMES TimeFrame = PERIOD_M15; // Trading time frame
+input double StartingBalance = 5000; // Minimum starting balance
+input bool UseCentAccount = false; // Use cent account
+
+// Define global variables
+int copiesSold = 0; // Number of copies sold
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    // Check starting balance or cent account
+    if (AccountInfoDouble(ACCOUNT_BALANCE) < StartingBalance)
+    {
+        Print('Insufficient balance. Minimum starting balance of $', StartingBalance, ' required.');
+        return INIT_FAILED;
+    }
+    else if (UseCentAccount && AccountInfoDouble(ACCOUNT_CURRENCY) != 100)
+    {
+        Print('Invalid account type. Cent account required.');
+        return INIT_FAILED;
+    }
+
+    // Set initial price
+    double price = 199;
+
+    // Check number of copies sold
+    if (copiesSold > 0)
+    {
+        // Increase price after initial copies are sold out
+        price = 299;
+    }
+
+    Print('Wirama Rush M9 Forex Software initialized. Price: $', price);
+
+    return INIT_SUCCEEDED;
+}
+
+//+------------------------------------------------------------------+
+//| Expert deinitialization function                                 |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+    Print('Wirama Rush M9 Forex Software deinitialized.');
+}
+
+//+------------------------------------------------------------------+
+//| Expert tick function                                             |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+    // Multilevel support and resistance analysis
+    // Identify optimal market prices
+    // Place cautious orders with moderate lot sizes
+    // Implement risk management measures
+    // Trade on specified currency pairs
+    // Execute trades based on M15 time frame
+    // Provide a broad range of market views
+    // Focus on necessary trading functions
+    // Implement required trade functions for algorithm
+    // Logical conclusion
+}
+
+//+------------------------------------------------------------------+
+//| Expert start function                                            |
+//+------------------------------------------------------------------+
+void OnStart()
+{
+    // Execute trading logic
+    OnTick();
+}
